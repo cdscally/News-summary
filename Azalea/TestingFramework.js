@@ -7,7 +7,9 @@ function expect(testvalue) {
   var errorMessage;
 
   function toEqual(actualvalue) {
-    if(testvalue !== actualvalue) {
+    if(testvalue == actualvalue) {
+      runPassedTestProcess();
+    } else {
       failures++;
       errorMessage = ` - Expected "${testvalue}" to equal "${actualvalue}".`;
       runErrorProcess();
@@ -31,11 +33,18 @@ function expect(testvalue) {
   };
 
   function toBeDefined() {
-    if(testvalue == undefined) {
+    if(testvalue !== undefined) {
+      runPassedTestProcess();
+    } else {
       failures++;
       errorMessage = ` - Expected ${testvalue} to be defined.`
       runErrorProcess();
     };
+  };
+
+  function runPassedTestProcess() {
+    var list = test.getElementsByTagName("LI")
+    list[list.length - 1].className = "pass";
   };
 
 
