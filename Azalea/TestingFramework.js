@@ -42,22 +42,6 @@ function expect(testvalue) {
     };
   };
 
-  function runPassedTestProcess() {
-    var list = test.getElementsByTagName("LI")
-    list[list.length - 1].className = "pass";
-  };
-
-
-  function error(errorMessage) {
-    test.innerHTML += `<p class='fail'>${errorMessage}</p>`
-  };
-
-  function runErrorProcess() {
-    error(errorMessage);
-    var list = test.getElementsByTagName("LI")
-    list[list.length - 1].className = "fail";
-  };
-
   return {
     toEqual: toEqual,
     toNotEqual: toNotEqual,
@@ -65,6 +49,22 @@ function expect(testvalue) {
     toBeDefined: toBeDefined
   }
 
+};
+
+function runPassedTestProcess() {
+  var list = test.getElementsByTagName("LI")
+  list[list.length - 1].className = "pass";
+};
+
+
+function error(errorMessage) {
+  test.innerHTML += `<p class='fail'>${errorMessage}</p>`
+};
+
+function runErrorProcess() {
+  error(errorMessage);
+  var list = test.getElementsByTagName("LI")
+  list[list.length - 1].className = "fail";
 };
 
 function describe(testHeading, func) {
@@ -76,11 +76,17 @@ function describe(testHeading, func) {
 };
 
 function it(description, block) {
-  numberOfTests++;
-  document
-  .getElementById("test")
-  .innerHTML += `<li>${description}</li>`;
-  block();
+  try {
+    numberOfTests++;
+    document
+    .getElementById("test")
+    .innerHTML += `<li>${description}</li>`;
+    block();
+  } catch(e) {
+    failures++;
+    errorMessage = `- ${e.stack}`
+    runErrorProcess();
+  };
 };
 
 function testCounter() {

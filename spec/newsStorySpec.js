@@ -25,8 +25,5 @@ describe("News story creation", function() {
     expect(story.URL).toEqual("https://www.theguardian.com/sport/live/2017/jun/22/royal-ascot-2017-buildup-to-the-gold-cup-live");
   });
 
-  it ("defines new Story", function() {
-    expect(new Story()).toBeDefined;
-  });
 
 });
