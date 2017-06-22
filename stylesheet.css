@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.img {
+
+}
+
+.headline {
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+.title {
+  padding: 20px;
+  font-size: 40px;
+}
+
+.summary {
+  text-align: justify;
+
+}
