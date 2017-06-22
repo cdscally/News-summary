@@ -31,7 +31,7 @@ function expect(testvalue) {
   };
 
   function toBeDefined() {
-    if(void 0 == testvalue) {
+    if(testvalue == undefined) {
       failures++;
       errorMessage = ` - Expected ${testvalue} to be defined.`
       runErrorProcess();
