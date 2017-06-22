@@ -1,5 +1,5 @@
-var Story = function(hash) {
-  this.headline = hash["webTitle"];
-  this.URL = hash["webUrl"];
-  this.imageURL = hash["fields"]["thumbnail"];
+var Story = function(object) {
+  this.headline = object.webTitle;
+  this.URL = object.webUrl;
+  this.imageURL = object.fields.thumbnail;
 };
